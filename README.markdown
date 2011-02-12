@@ -4,10 +4,8 @@ We use this GitHub repository to collect information and utilities to help peopl
 
 We welcome your contributions, issue reportage, and suggestions. Write us at info@min.us, or contribute directly here!
 
--- 
-Carl Hu | Cofounder
-
-carl@min.us | http://min.us
-
-Share simply.
+    -- 
+    Carl Hu | Cofounder
+    carl@min.us | http://min.us
+    Share simply.
 
