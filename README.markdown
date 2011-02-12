@@ -6,6 +6,8 @@ We welcome your contributions, issue reportage, and suggestions. Write us at inf
 
 -- 
 Carl Hu | Cofounder
+
 carl@min.us | http://min.us
+
 Share simply.
 
