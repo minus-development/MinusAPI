@@ -1,69 +1,7 @@
-API
-We have designed our API to allow you to easily create galleries and upload files programmatically. There are currently 7 API’s published with more to come in the near future. The API is open and no registration is required.
+The Minus API
+=============
+We use this GitHub repository to collect information and utilities to help people who want to build applications for Minus (http://min.us), a sharing platform, to build more easily.
 
-Please subscribe to our http://blog.min.us for any updates regarding our API and contact us if you have any questions.
 
-Version 1.01 - January 30th, 2011
-
-If anyone contributes and submits to Github please let us know and we'll post here.
-
-CreateGallery
-Description
-http://min.us/api/CreateGallery
-creates a gallery on the server side and returns the editor and reader id. The editor id combined with the key can be used to upload images into the gallery.
-On return, the gallery can be immediately viewed on the web site.
-Example
-A call returns the below HttpResponse. This gallery can be edited in any browser by going to http://min.us/mej0rg. The gallery can be viewed via http://min.us/vodiX5. Response: {"editor_id": "ej0rg", "reader_id": "vodiX5"}
-UploadItem
-http://min.us/api/UploadItem
-Parameters
-URL should be structured as follows: http://min.us/api/UploadItem?editor_id=enRlK&key=ej0rg&filename=jcm3U.png
-Body: A standard multipart file POST.
-Example
-You can immediately view this picture in any browser by: http://min.us/icBpkM. Returns: {"id": "cBpkM", "height": 64, "width": 500, "filesize": "1010 bytes"}
-
-Note that you must prefix the id with a /i (if it's an item) or a /m (if it's a gallery) to see access the uploaded item or new gallery.
-
-SaveGallery
-http://min.us/api/SaveGallery
-Use this to update the gallery name or change sort order.
-Example working Python code:
-
-import httplib, urllib, urllib2
-params = {"name":"test2","id":"bgZrGCaapOSL2","key":"OK","items":["A1Q"]}
-encoded = urllib.urlencode(params)
-f = urllib2.urlopen('http://min.us/api/SaveGallery ', encoded)
-GetItems
-http://min.us/api/GetItems
-Use this to retrieve items inside gallery programmatically
-Example: http://min.us/api/GetItems/mvgkRZC returns:
-
-{
-    "READ_ONLY_URL_FOR_GALLERY": "http://min.us/mvgkRZC",
-    "GALLERY_TITLE": "Untitled",
-    "ITEMS_GALLERY": [
-         "http://i.min.us/jb0oQi",
-         "http://i.min.us/jb0Aj2",
-         "http://i.min.us/jdLnSy",
-         "http://i.min.us/jdH3Au",
-         "http://i.min.us/jdLqa6"
-     ]
-}
-SignIn
-http://min.us/api/SignIn
-Use this to sign in a user and get a cookie to use to add galleries to the user's "My Galleries" page.
-POST request type, parameters are username and password1, with the already registered username and password for the user.
-The reply is a json of a dictionary with a key you should check: "success": True/False. Other values in the dictionary give error information telling the user about invalid username, password, or username-password combination.
-Retain cookie to place subsequent visited or created galleries in the user's "My Galleries" page.
-SignOut
-http://min.us/api/SignOut
-GET request. No params.
-Clears cookie, signs out user.
-My Galleries
-http://min.us/api/MyGalleries.json
-GET request. No params.
-Exposes My Galleries page as a convenient json call.
-List of tuples (lists). Each (last visited time, gallery name, number of items in gallery, number of clicks on gallery, the view url, the edit url).
-If the edit url is not available, instead of starting with 'm', it will be "Unavailable". If the gallery has been deleted, the value is "Deleted".
 
 
