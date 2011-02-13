@@ -33,10 +33,14 @@ def create_gallery():
 	return (dd['editor_id'], "", dd['reader_id'])
 
 def saveGallery(name, editor_id, items):
+
+	name = "test"
+
 	params = {"name":name,"id": editor_id,"key":"OK","items":items}
 	encoded = urllib.urlencode(params)
+	params = json.dumps(params)
 	try:
-		f = urllib2.urlopen('http://min.us/api/SaveGallery ', encoded)
+		f = urllib2.urlopen('http://min.us/api/SaveGallery_Web', params)
 	except urllib2.HTTPError, e:
 		print "\n", e.code
 		print "SaveGallery Failed:\n", "params: ", params, "\nencoded params: ", encoded, "\n"
@@ -57,10 +61,12 @@ def generateImageList(reader_id):
 		
 
 def main():
-	editor_id,key,reader_id = create_gallery()
-	args = sys.argv[1:]
-	for arg in args:
-		upload_file(arg,editor_id,key)
+	#editor_id,key,reader_id = create_gallery()
+	#args = sys.argv[1:]
+	#for arg in args:
+	#	upload_file(arg,editor_id,key)
+	reader_id = "vbrqFX"
+	editor_id = "eJs0LMWZ9uGr"
 	imageList = generateImageList(reader_id)
 	saveGallery("Testing rename - " + strftime("%Y-%m-%d %H:%M"), editor_id, imageList)
 	print 'Editor URL: http://min.us/m' + editor_id 
