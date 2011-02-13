@@ -3,9 +3,16 @@ from time import strftime
 import json
 import unicodedata
 
+########## REPLACE FOLLOWING WITH VALID EDITOR AND VIEWER URLS ####################
+# MINUS_URL = 'http://min.us/'
+MINUS_URL = 'http://192.168.0.190:8001/'
+READER_ID = "veTYOJ"
+EDITOR_ID = "cXLjZ5CjJr5J"
+###################################################################################	
+
 def upload_file(filename, editor_id, key):
 	basename = os.path.basename(filename)
-	url='http://min.us/api/UploadItem' + '?editor_id=' + editor_id + '&key=' + key + '&filename=' + basename
+	url=MINUS_URL + 'api/UploadItem' + '?editor_id=' + editor_id + '&key=' + key + '&filename=' + basename
 	file_arg = 'file=@'+filename
 	p = subprocess.Popen(['curl', '-s', '-S', '-F', file_arg, url], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	output,error = p.communicate()
@@ -26,30 +33,26 @@ def parseDict(dictStr):
 	return dd	
 
 def create_gallery():
-	f = urllib2.urlopen('http://min.us/api/CreateGallery')
+	f = urllib2.urlopen(MINUS_URL + 'api/CreateGallery')
 	result = f.read()
 	dd = parseDict(result)
 
 	return (dd['editor_id'], "", dd['reader_id'])
 
 def saveGallery(name, editor_id, items):
-
 	name = "test"
-
-	params = {"name":name,"id": editor_id,"key":"OK","items":items}
-	encoded = urllib.urlencode(params)
-	params = json.dumps(params)
+	params = {"name":name,"id": editor_id,"key":"OK","items":json.dumps(items)}
+	params = urllib.urlencode(params)
 	try:
-		f = urllib2.urlopen('http://min.us/api/SaveGallery_Web', params)
+		f = urllib2.urlopen(MINUS_URL + 'api/SaveGallery', params)
 	except urllib2.HTTPError, e:
 		print "\n", e.code
-		print "SaveGallery Failed:\n", "params: ", params, "\nencoded params: ", encoded, "\n"
+		print "SaveGallery Failed:\n", "params: ", params
 
 def generateImageList(reader_id):
 
 	formattedList = []
-
-	f = urllib2.urlopen('http://min.us/api/GetItems/m' + reader_id)
+	f = urllib2.urlopen(MINUS_URL + 'api/GetItems/m' + reader_id)
 	jsonData = json.loads( f.read())
 	imagesList = jsonData[u'ITEMS_GALLERY']
 	for image in imagesList:
@@ -65,11 +68,9 @@ def main():
 	#args = sys.argv[1:]
 	#for arg in args:
 	#	upload_file(arg,editor_id,key)
-	reader_id = "vbrqFX"
-	editor_id = "eJs0LMWZ9uGr"
-	imageList = generateImageList(reader_id)
-	saveGallery("Testing rename - " + strftime("%Y-%m-%d %H:%M"), editor_id, imageList)
-	print 'Editor URL: http://min.us/m' + editor_id 
-	print 'Viewer URL: http://min.us/m' + reader_id
+	imageList = generateImageList(READER_ID)	
+	saveGallery("Testing rename - " + strftime("%Y-%m-%d %H:%M"), EDITOR_ID, imageList)
+	print 'Editor URL: http://min.us/m' + EDITOR_ID 
+	print 'Viewer URL: http://min.us/m' + READER_ID
 
 main()
