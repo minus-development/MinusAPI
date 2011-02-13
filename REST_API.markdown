@@ -102,7 +102,7 @@ My Galleries
 * GET request. No params.
 * Exposes My Galleries page as a convenient json call.
 * JSON formatted list:
-
+::
 	{
 		"galleries": [
 		{ "last_visit": "7 minutes ago", "name": "test", "item_count": 1, "clicks": 4, "reader_id": "vgkRZC", "editor_id": "bgZrGCaapOSL2" },
