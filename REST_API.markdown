@@ -50,13 +50,15 @@ SaveGallery
 ===========
 * http://min.us/api/SaveGallery
 * Use this to update the gallery name or change sort order.
-
+* application/x-www-form-urlencoded
+* items=%5B%22A1Q%22%5D&name=test2&key=OK&id=bgZrGCaapOSL2
+* items is a json encoded list of the gallery items: {"A1Q", "B1Q"}
 Example working Python code:
 
 ::
 
-    import httplib, urllib, urllib2
-    params = {"name":"test2","id":"bgZrGCaapOSL2","key":"OK","items":["A1Q"]}
+    import httplib, urllib, urllib2, json
+    params = {"name":"test2","id":"bgZrGCaapOSL2","key":"OK","items":json.dumps(["A1Q"])}
     encoded = urllib.urlencode(params)
     f = urllib2.urlopen('http://min.us/api/SaveGallery ', encoded)
 
@@ -99,8 +101,11 @@ My Galleries
 * http://min.us/api/MyGalleries.json
 * GET request. No params.
 * Exposes My Galleries page as a convenient json call.
-* List of tuples (lists). Each (last visited time, gallery name, number of items in gallery, number of clicks on gallery, the view url, the edit url).
+* JSON formatted list:
+	{"galleries": [
+		{ "last_visit": "7 minutes ago", "name": "test", "item_count": 1, "clicks": 4, "reader_id": "vgkRZC", "editor_id": "bgZrGCaapOSL2" },
+		{ "last_visit": "5 hours ago", "name": "test2", "item_count": 1, "clicks": 0, "reader_id": "vgkRZB", "editor_id": "bgZrGCaapOSL1" } 
+	]}
 * If the edit url is not available, instead of starting with 'm', it will be "Unavailable". If the gallery has been deleted, the value is "Deleted". 
-
 
 
