@@ -101,8 +101,9 @@ My Galleries
 * http://min.us/api/MyGalleries.json
 * GET request. No params.
 * Exposes My Galleries page as a convenient json call.
-* JSON formatted list:
-::
+* If the edit url is not available, instead of starting with 'm', it will be "Unavailable". If the gallery has been deleted, the value is "Deleted". 
+JSON formatted list:
+
 	{
 		"galleries": [
 		{ "last_visit": "7 minutes ago", "name": "test", "item_count": 1, "clicks": 4, "reader_id": "vgkRZC", "editor_id": "bgZrGCaapOSL2" },
@@ -110,6 +111,6 @@ My Galleries
 		]
 	}
 	
-* If the edit url is not available, instead of starting with 'm', it will be "Unavailable". If the gallery has been deleted, the value is "Deleted". 
+
 
 
