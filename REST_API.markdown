@@ -102,6 +102,7 @@ My Galleries
 * GET request. No params.
 * Exposes My Galleries page as a convenient json call.
 * If the edit url is not available, instead of starting with 'm', it will be "Unavailable". If the gallery has been deleted, the value is "Deleted". 
+
 JSON formatted list:
 
 	{
