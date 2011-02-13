@@ -4,8 +4,8 @@ import json
 import unicodedata
 
 ########## REPLACE FOLLOWING WITH VALID EDITOR AND VIEWER URLS ####################
-# MINUS_URL = 'http://min.us/'
-MINUS_URL = 'http://192.168.0.190:8001/'
+MINUS_URL = 'http://min.us/'
+# MINUS_URL = 'http://192.168.0.190:8001/'
 READER_ID = "veTYOJ"
 EDITOR_ID = "cXLjZ5CjJr5J"
 ###################################################################################	
