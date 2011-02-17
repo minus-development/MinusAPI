@@ -37,7 +37,7 @@ UploadItem
 
 Parameters
 --------------
-* URL should be structured as follows: http://min.us/api/UploadItem?editor_id=enRlK&key=ej0rg&filename=jcm3U.png
+* URL should be structured as follows: http://min.us/api/UploadItem?editor_id=enRlK&key=OK&filename=jcm3U.png
 * Body: A standard multipart file POST.
 
 Example
