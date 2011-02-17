@@ -13,3 +13,7 @@ C#
 Python
 =======
 [http://code.google.com/p/python-minus/](http://code.google.com/p/python-minus/)
+
+Javascript
+=======
+[https://github.com/buger/minus-javascript](https://github.com/buger/minus-javascript)
