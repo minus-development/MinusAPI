@@ -21,6 +21,7 @@ Javascript
 
 
 We welcome your contributions, issue reportage, and suggestions. Write us at info@min.us, or contribute directly here!
+=======
 
 ---   
 Carl Hu | Cofounder   
