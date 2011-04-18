@@ -40,11 +40,17 @@ Parameters
 * URL should be structured as follows: http://min.us/api/UploadItem?editor_id=enRlK&key=OK&filename=jcm3U.png
 * Body: A standard multipart file POST.
 
-Example
+Result
 ----------
 You can immediately view this picture in any browser by: http://min.us/icBpkM. Returns: {"id": "cBpkM", "height": 64, "width": 500, "filesize": "1010 bytes"}
 
 Note that you must prefix the id with a /i (if it's an item) or a /m (if it's a gallery) to see access the uploaded item or new gallery.
+
+Example
+----------
+Note that the editor_id does not have the leading m that is in the page url.
+curl "http://min.us/api/UploadItem?editor_id=dn48vKBiP3q9&key=OK&filename=min.png" -F "file=@min.png" 
+http://min.us/mvpqALK#1
 
 SaveGallery
 ===========
